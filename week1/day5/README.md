@@ -191,4 +191,8 @@ Too much coding increases complexity and maintenance effort.
 
 Programming allows developers to create customized and advanced solutions.
 
+# Trailhead Screenshot
+
+<img width="804" height="721" alt="image" src="https://github.com/user-attachments/assets/f88ae876-665a-411b-b5bb-cc618db7fc4b" />
+
 
