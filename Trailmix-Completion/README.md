@@ -1,6 +1,6 @@
 ## Trailmix Completion
 
-Successfully completed the Salesforce Administrator Day 5 Trailmix.
+Successfully completed the Salesforce Administrator Trailmix.
 
 ----
 
