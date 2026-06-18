@@ -1,0 +1,325 @@
+# Salesforce Administrator Track – Day 1
+## User Management, Security & Identity
+
+## What is a Salesforce Administrator?
+
+A Salesforce Administrator is responsible for managing and maintaining the Salesforce platform within an organization. Administrators ensure that users have the correct access, data is secure, business processes are configured properly, and the system runs efficiently.
+
+### Responsibilities of a Salesforce Administrator
+- Create and manage users
+- Assign Profiles, Roles, and Permission Sets
+- Manage security and data access
+- Configure objects, fields, and applications
+- Monitor user activity and login history
+- Support business users
+- Maintain data quality and system performance
+
+---
+
+# Difference Between User, Role, Profile, and Permission Set
+
+## User
+A User is an individual who logs in and uses Salesforce.
+
+### Examples
+- Student
+- Faculty
+- Placement Officer
+- HOD
+- Principal
+- Salesforce Administrator
+
+---
+
+## Profile
+A Profile determines what a user can do in Salesforce.
+
+### Controls
+- Object permissions
+- Field permissions
+- App access
+- Login hours
+- Login IP ranges
+
+### Key Point
+Every user must have exactly **one Profile**.
+
+---
+
+## Role
+A Role determines what data a user can see through the role hierarchy.
+
+### Example Hierarchy
+
+Principal  
+└── HOD  
+&nbsp;&nbsp;&nbsp;&nbsp;└── Faculty  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── Student
+
+Placement Officer may exist in a parallel branch.
+
+### Key Point
+Roles control **record visibility**, not permissions.
+
+---
+
+## Permission Set
+A Permission Set provides additional permissions to users without changing their profile.
+
+### Example
+A Faculty member may temporarily receive permission to manage attendance records.
+
+### Key Point
+A user can have multiple Permission Sets.
+
+---
+
+# Difference Between Role and Profile
+
+| Feature | Profile | Role |
+|----------|----------|----------|
+| Controls Permissions | Yes | No |
+| Controls Record Visibility | No | Yes |
+| Required for Every User | Yes | No |
+| Number Assigned | One | Usually One |
+| Example | Can Edit Student Records | Can View Subordinate Records |
+
+---
+
+# College Security Design (Vishnu Institute)
+
+## Access Matrix
+
+| Role | Student Records | Course Records | Placement Records | Attendance Records |
+|--------|--------|--------|--------|--------|
+| Student | View | View | View | View |
+| Faculty | View, Create, Edit | View, Create, Edit | View | Create, Edit |
+| Placement Officer | View | View | Create, Edit | View |
+| HOD | View, Create, Edit | View, Create, Edit | View, Edit | View, Edit |
+| Principal | View All | View All | View All | View All |
+| Salesforce Administrator | Full Access | Full Access | Full Access | Full Access |
+
+---
+
+## Detailed Permissions
+
+### Student
+- View Student Records
+- View Course Records
+- View Placement Records
+- View Attendance Records
+- Cannot Create, Edit, or Delete records
+
+### Faculty
+- Create and Edit Student Records
+- Create and Edit Course Records
+- Create and Edit Attendance Records
+- View Placement Records
+
+### Placement Officer
+- Create and Edit Placement Records
+- View Student and Course Records
+
+### HOD
+- Manage department-level records
+- Review attendance and placement information
+- Edit student and course data
+
+### Principal
+- View all institutional records
+- Monitor overall academic performance
+
+### Salesforce Administrator
+- Complete system access
+- User management
+- Security configuration
+- Data management
+
+---
+
+# Identity Management Concepts
+
+## Single Sign-On (SSO)
+
+Single Sign-On allows users to log in once and access multiple applications without entering credentials again.
+
+### Benefits
+- Improved security
+- Better user experience
+- Reduced password management issues
+
+---
+
+## Identity Provider (IdP)
+
+The system that authenticates the user.
+
+### Example
+Microsoft Azure AD
+
+---
+
+## Service Provider (SP)
+
+The application the user wants to access.
+
+### Example
+Salesforce
+
+---
+
+## Identity Management
+
+Identity Management ensures that:
+- Correct users access the system
+- Authentication is secure
+- Authorization follows company policies
+
+---
+
+# Enterprise Thinking Exercise
+
+## Scenario
+A student accidentally receives Salesforce Administrator access.
+
+### 1. What problems might occur?
+
+- Unauthorized access to sensitive data
+- User creation or deletion
+- Security settings modification
+- Data corruption
+- Compliance violations
+
+### 2. What data could be exposed?
+
+- Student information
+- Faculty information
+- Placement records
+- Attendance records
+- Confidential reports
+
+### 3. What records could be modified?
+
+- Student Records
+- Course Records
+- Placement Records
+- Attendance Records
+- User Accounts
+- Security Settings
+
+### 4. How would you prevent this?
+
+- Follow least privilege principle
+- Use Permission Sets instead of broad profiles
+- Conduct regular access reviews
+- Enable Multi-Factor Authentication (MFA)
+- Monitor login and user activity
+- Restrict administrator access to authorized personnel only
+
+---
+
+# How Salesforce Secures Data
+
+Salesforce security follows multiple layers:
+
+## Organization Level Security
+- Password policies
+- Login restrictions
+- Trusted IP ranges
+
+## Object Level Security
+- Controlled through Profiles and Permission Sets
+
+## Field Level Security
+- Restricts visibility of sensitive fields
+
+## Record Level Security
+- Role Hierarchy
+- Sharing Rules
+- Manual Sharing
+
+## User Authentication
+- MFA
+- SSO
+- Identity Verification
+
+---
+
+# Administrator Access Risks
+
+Giving unnecessary administrator access can result in:
+
+- Data leaks
+- Unauthorized changes
+- Accidental deletion of records
+- Security breaches
+- Compliance violations
+- System downtime
+
+### Best Practice
+Always apply the **Principle of Least Privilege**:
+Users should receive only the minimum access required to perform their job.
+
+---
+
+# Reflection
+
+Enterprise systems contain sensitive business data. Strong access control ensures that:
+
+- Data remains secure
+- Users only access relevant information
+- Compliance requirements are met
+- Business processes remain reliable
+- Risks are minimized
+
+Without proper access control, organizations may face data breaches, financial losses, and operational disruptions.
+
+---
+
+# Interview Questions and Answers
+
+## 1. What is a Salesforce User?
+A Salesforce User is a person who can log in and use Salesforce.
+
+## 2. What is a Profile?
+A Profile defines what a user can do in Salesforce.
+
+## 3. What is a Permission Set?
+A Permission Set grants additional permissions without changing the user's profile.
+
+## 4. Difference between Role and Profile?
+Profile controls permissions; Role controls record visibility.
+
+## 5. Why should users not be given Admin access?
+Admin access provides unrestricted control and can expose sensitive data or cause accidental changes.
+
+## 6. What is Single Sign-On?
+SSO allows users to access multiple applications with one login.
+
+## 7. What is Identity Management?
+Identity Management controls authentication, authorization, and user access.
+
+## 8. How does Salesforce secure data?
+Through Profiles, Roles, Permission Sets, Sharing Rules, MFA, and organization-wide security settings.
+
+## 9. Why can a user have multiple Permission Sets but only one Profile?
+A Profile provides the base level of access, while Permission Sets add extra permissions when needed.
+
+## 10. What does a Salesforce Administrator do?
+A Salesforce Administrator manages users, security, data access, system configuration, and platform maintenance.
+
+---
+
+# Day 1 Learning Outcome
+
+✅ Understand Salesforce Administrator responsibilities
+
+✅ Manage Salesforce users
+
+✅ Differentiate Profiles, Roles, and Permission Sets
+
+✅ Understand Identity Management and SSO
+
+✅ Apply enterprise security principles
+
+✅ Design secure access models for organization
